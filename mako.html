@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mako Host Salary Sheet | SAKIL AGENCY</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #060714;
+      --card-bg: rgba(18, 20, 48, 0.78);
+      --card-border: rgba(99, 102, 241, 0.35);
+      --accent: #6366f1;
+      --accent-mint: #34d399;
+      --gold: #fbbf24;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 18% 15%, rgba(79, 70, 229, 0.25), transparent 44%),
+        radial-gradient(circle at 82% 85%, rgba(124, 58, 237, 0.2), transparent 44%);
+      color: var(--text-main);
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Sticky Top Navigation Menu Bar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(6, 7, 20, 0.88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(99, 102, 241, 0.28);
+      padding: 12px 16px;
+    }
+
+    .nav-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .brand-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #fbbf24, #d97706);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 15px;
+      color: #060714;
+      box-shadow: 0 0 15px rgba(251, 191, 36, 0.35);
+    }
+
+    .brand-text {
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      color: #fff;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 2px 0;
+    }
+
+    .nav-menu::-webkit-scrollbar { display: none; }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 7px 14px;
+      border-radius: 50px;
+      border: 1px solid transparent;
+      background: rgba(255, 255, 255, 0.03);
+      white-space: nowrap;
+      transition: all 0.22s ease;
+    }
+
+    .nav-link:hover {
+      color: #fff;
+      background: rgba(99, 102, 241, 0.18);
+      border-color: rgba(99, 102, 241, 0.4);
+    }
+
+    .nav-link.active {
+      color: #fff;
+      background: linear-gradient(90deg, rgba(79, 70, 229, 0.45), rgba(124, 58, 237, 0.35));
+      border-color: #818cf8;
+      box-shadow: 0 0 14px rgba(99, 102, 241, 0.38);
+    }
+
+    /* Fixed Background Watermark */
+    .watermark-bg {
+      position: fixed;
+      top: 52%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 340px;
+      height: 340px;
+      opacity: 0.065;
+      pointer-events: none;
+      z-index: 0;
+      animation: floatWatermark 7s ease-in-out infinite;
+      filter: drop-shadow(0 0 35px rgba(99, 102, 241, 0.55));
+    }
+
+    @keyframes floatWatermark {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -53%) scale(1.04); }
+    }
+
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 28px 16px 65px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header Section */
+    .header {
+      text-align: center;
+      margin-bottom: 26px;
+      padding: 26px 16px;
+      background: linear-gradient(145deg, rgba(22, 24, 62, 0.8), rgba(10, 11, 30, 0.92));
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      border-radius: 24px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 14px 38px rgba(0, 0, 0, 0.5);
+    }
+
+    .header-logo {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 12px;
+      filter: drop-shadow(0 6px 18px rgba(99, 102, 241, 0.55));
+    }
+
+    .agency-badge {
+      display: inline-block;
+      background: linear-gradient(90deg, rgba(251, 191, 36, 0.15), rgba(217, 119, 6, 0.25));
+      border: 1px solid rgba(251, 191, 36, 0.5);
+      color: var(--gold);
+      font-size: 11.5px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      padding: 5px 14px;
+      border-radius: 50px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .header h1 {
+      font-size: 24px;
+      font-weight: 800;
+      background: linear-gradient(90deg, #ffffff, #c7d2fe, #a7f3d0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.3px;
+    }
+
+    .header p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 5px;
+    }
+
+    /* Controls (Search & Week Dropdown) */
+    .controls {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    @media (max-width: 540px) {
+      .controls { grid-template-columns: 1fr; }
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 14px 16px;
+      background: rgba(15, 17, 42, 0.85);
+      border: 1px solid rgba(99, 102, 241, 0.4);
+      border-radius: 14px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+      backdrop-filter: blur(10px);
+      transition: all 0.25s ease;
+    }
+
+    .input-field::placeholder { color: #64748b; }
+    .input-field:focus {
+      border-color: #818cf8;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.22);
+    }
+
+    select.input-field option {
+      background: #0f112a;
+      color: #fff;
+    }
+
+    /* Host Salary Card */
+    .host-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 16px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .host-card.top-rank-1 {
+      border-color: rgba(251, 191, 36, 0.65);
+      background: linear-gradient(145deg, rgba(28, 32, 74, 0.88), rgba(18, 20, 48, 0.88));
+      box-shadow: 0 12px 35px rgba(251, 191, 36, 0.14);
+    }
+
+    .host-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(129, 140, 248, 0.65);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .profile-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .avatar-container {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2.5px solid #6366f1;
+      box-shadow: 0 0 15px rgba(99, 102, 241, 0.45);
+      background: #141638;
+    }
+
+    .top-rank-1 .avatar {
+      border-color: var(--gold);
+      box-shadow: 0 0 18px rgba(251, 191, 36, 0.5);
+    }
+
+    .rank-pill {
+      position: absolute;
+      bottom: -4px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 50px;
+      background: #1e1b4b;
+      color: #e0e7ff;
+      border: 1px solid rgba(129, 140, 248, 0.5);
+      white-space: nowrap;
+    }
+
+    .rank-1 {
+      background: linear-gradient(90deg, #f59e0b, #fbbf24);
+      color: #451a03;
+      border-color: #fef08a;
+    }
+
+    .rank-2 {
+      background: linear-gradient(90deg, #94a3b8, #e2e8f0);
+      color: #0f172a;
+      border-color: #ffffff;
+    }
+
+    .rank-3 {
+      background: linear-gradient(90deg, #b45309, #d97706);
+      color: #fffbeb;
+      border-color: #fde68a;
+    }
+
+    .host-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .host-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 12.5px;
+      color: var(--text-muted);
+    }
+
+    .tag-id {
+      background: rgba(99, 102, 241, 0.25);
+      color: #c7d2fe;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    .status-badge {
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .status-paid {
+      background: rgba(16, 185, 129, 0.16);
+      color: #34d399;
+      border: 1px solid rgba(52, 211, 153, 0.4);
+    }
+
+    .status-pending {
+      background: rgba(245, 158, 11, 0.16);
+      color: #fbbf24;
+      border: 1px solid rgba(251, 191, 36, 0.4);
+    }
+
+    /* Card Stats Grid */
+    .card-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      padding-top: 16px;
+    }
+
+    @media (max-width: 600px) {
+      .card-stats { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .stat-box {
+      background: rgba(8, 9, 24, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 10px 12px;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .stat-value {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .stat-usd { color: #38bdf8; }
+    .stat-bdt { color: var(--gold); font-size: 15.5px; }
+
+    .empty-state {
+      text-align: center;
+      padding: 45px 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 36px;
+      font-size: 12px;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Menu Bar -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <div class="brand-icon">SA</div>
+        <span class="brand-text">SAKIL AGENCY</span>
+      </a>
+      <div class="nav-menu">
+        <a href="index.html" class="nav-link">Dashboard</a>
+        <a href="kamo.html" class="nav-link">Kamo</a>
+        <a href="tigo.html" class="nav-link">Tigo</a>
+        <a href="sela-anchor.html" class="nav-link">Sela Anchor</a>
+        <a href="crush.html" class="nav-link">Crush</a>
+        <a href="kome-host.html" class="nav-link">Kome Host</a>
+        <a href="chamet.html" class="nav-link">Chamet</a>
+        <a href="olamet.html" class="nav-link">Olamet Lite</a>
+        <a href="mako.html" class="nav-link active">Mako</a>
+        <a href="chato.html" class="nav-link">Chato</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Fixed Background Mako Logo Watermark -->
+  <svg class="watermark-bg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="wmMako" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#4f46e5"/>
+        <stop offset="100%" stop-color="#7c3aed"/>
+      </linearGradient>
+    </defs>
+    <rect x="16" y="16" width="168" height="168" rx="40" fill="url(#wmMako)"/>
+    <circle cx="84" cy="104" r="36" fill="#ffffff"/>
+    <circle cx="116" cy="104" r="36" fill="#ffffff"/>
+    <path d="M100 64 C96 58 88 60 88 66 C88 72 100 80 100 80 C100 80 112 72 112 66 C112 60 104 58 100 64 Z" fill="#34d399"/>
+  </svg>
+
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="header-logo">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="logoMako" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#4f46e5"/>
+              <stop offset="100%" stop-color="#7c3aed"/>
+            </linearGradient>
+          </defs>
+          <rect x="14" y="14" width="172" height="172" rx="42" fill="url(#logoMako)" stroke="rgba(255,255,255,0.35)" stroke-width="3"/>
+          <circle cx="84" cy="104" r="36" fill="#ffffff"/>
+          <circle cx="116" cy="104" r="36" fill="#ffffff"/>
+          <path d="M100 64 C96 58 88 60 88 66 C88 72 100 80 100 80 C100 80 112 72 112 66 C112 60 104 58 100 64 Z" fill="#34d399"/>
+        </svg>
+      </div>
+      <div class="agency-badge">SAKIL AGENCY &bull; 100% TRUSTED</div>
+      <h1>Mako Host Salary Sheet</h1>
+      <p>Top Earners Leaderboard &bull; Search by Host ID for weekly payout details</p>
+    </div>
+
+    <!-- Search & Week Filter -->
+    <div class="controls">
+      <input type="text" id="searchInput" class="input-field" placeholder="Search by Host ID or Name...">
+      <select id="weekFilter" class="input-field">
+        <option value="ALL">All Weeks</option>
+      </select>
+    </div>
+
+    <!-- Host Cards Container -->
+    <div id="hostList">
+      <div class="empty-state">Loading Mako salary records...</div>
+    </div>
+
+    <div class="footer">
+      &copy; 2026 SAKIL AGENCY &bull; Official Mako Host Payroll System
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getFirestore, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBpAuWT_J0XfFQm_qbMLi6apfgHr3Fu5ik",
+      authDomain: "kamo-salary-sheet.firebaseapp.com",
+      projectId: "kamo-salary-sheet",
+      storageBucket: "kamo-salary-sheet.firebasestorage.app",
+      messagingSenderId: "523404807417",
+      appId: "1:523404807417:web:db3762935ab2cc2bbda628"
+    };
+
+    const APP_CATEGORY = "Mako";
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    let allRecords = [];
+
+    onSnapshot(collection(db, "hosts"), (snapshot) => {
+      allRecords = [];
+      const weeksSet = new Set();
+
+      snapshot.forEach((doc) => {
+        const data = doc.data();
+        if (data.app && data.app.toLowerCase() === APP_CATEGORY.toLowerCase()) {
+          allRecords.push({ id: doc.id, ...data });
+          if (data.week) weeksSet.add(data.week);
+        }
+      });
+
+      allRecords.sort((a, b) => {
+        const earnA = Number(a.coins) || Number(a.bdt) || 0;
+        const earnB = Number(b.coins) || Number(b.bdt) || 0;
+        return earnB - earnA;
+      });
+
+      populateWeekDropdown(Array.from(weeksSet));
+      applyFilters();
+    }, (error) => {
+      document.getElementById('hostList').innerHTML = `<div class="empty-state" style="color:#f87171;">Failed to load data. Please check Firestore permissions.</div>`;
+    });
+
+    function populateWeekDropdown(weeks) {
+      const select = document.getElementById('weekFilter');
+      const currentVal = select.value;
+      select.innerHTML = `<option value="ALL">All Weeks</option>`;
+      weeks.forEach(w => {
+        const opt = document.createElement('option');
+        opt.value = w;
+        opt.textContent = w;
+        select.appendChild(opt);
+      });
+      if (weeks.includes(currentVal)) select.value = currentVal;
+    }
+
+    function applyFilters() {
+      const query = document.getElementById('searchInput').value.trim().toLowerCase();
+      const selectedWeek = document.getElementById('weekFilter').value;
+
+      const weekFiltered = allRecords.filter(item => selectedWeek === "ALL" || item.week === selectedWeek);
+      const rankedList = weekFiltered.map((item, idx) => ({ ...item, rank: idx + 1 }));
+
+      const finalFiltered = rankedList.filter(item => {
+        return !query || 
+          (item.hostId && item.hostId.toLowerCase().includes(query)) ||
+          (item.name && item.name.toLowerCase().includes(query)) ||
+          (item.phone && item.phone.toLowerCase().includes(query));
+      });
+
+      renderCards(finalFiltered);
+    }
+
+    function renderCards(list) {
+      const container = document.getElementById('hostList');
+      if (list.length === 0) {
+        container.innerHTML = `<div class="empty-state">No Mako salary records found.</div>`;
+        return;
+      }
+
+      container.innerHTML = list.map(host => {
+        const coinsFormatted = Number(host.coins || 0).toLocaleString('en-US');
+        const usdFormatted = Number(host.usd || 0).toFixed(2);
+        const bdtFormatted = Number(host.bdt || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const isPaid = host.status === 'Paid';
+        const rankClass = host.rank === 1 ? 'rank-1' : host.rank === 2 ? 'rank-2' : host.rank === 3 ? 'rank-3' : '';
+        const cardHighlight = host.rank === 1 ? 'top-rank-1' : '';
+
+        return `
+          <div class="host-card ${cardHighlight}">
+            <div class="card-top">
+              <div class="profile-wrap">
+                <div class="avatar-container">
+                  <img src="${host.photo || 'https://via.placeholder.com/64/141638/ffffff?text=HOST'}" alt="Host" class="avatar">
+                  <span class="rank-pill ${rankClass}">#${host.rank}</span>
+                </div>
+                <div>
+                  <div class="host-name">${host.name}</div>
+                  <div class="host-meta">
+                    <span class="tag-id">ID: ${host.hostId}</span>
+                    <span>&#128222; ${host.phone || 'N/A'}</span>
+                  </div>
+                </div>
+              </div>
+              <span class="status-badge ${isPaid ? 'status-paid' : 'status-pending'}">
+                ${host.status || 'Pending'}
+              </span>
+            </div>
+
+            <div class="card-stats">
+              <div class="stat-box">
+                <div class="stat-label">Week Period</div>
+                <div class="stat-value">${host.week || '-'}</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-label">Total Coins</div>
+                <div class="stat-value">${coinsFormatted}</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-label">USD Amount</div>
+                <div class="stat-value stat-usd">$${usdFormatted}</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-label">BDT Payout</div>
+                <div class="stat-value stat-bdt">&#2547;${bdtFormatted}</div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    document.getElementById('searchInput').addEventListener('input', applyFilters);
+    document.getElementById('weekFilter').addEventListener('change', applyFilters);
+  </script>
+</body>
+</html>

@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WELCOME TO SAKIL AGENCY | Official Host Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #07080d;
+      --surface: rgba(18, 20, 30, 0.78);
+      --surface-hover: rgba(26, 29, 44, 0.94);
+      --border: rgba(255, 255, 255, 0.09);
+      --gold: #fbbf24;
+      --gold-soft: rgba(251, 191, 36, 0.14);
+      --emerald: #10b981;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Hind Siliguri', 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient Neutral Dark Glow Effects */
+    .ambient-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(115px);
+      z-index: 0;
+      pointer-events: none;
+      animation: pulseGlow 9s ease-in-out infinite alternate;
+    }
+
+    .orb-1 {
+      width: 400px;
+      height: 400px;
+      background: rgba(251, 191, 36, 0.09);
+      top: -90px;
+      left: -90px;
+    }
+
+    .orb-2 {
+      width: 430px;
+      height: 430px;
+      background: rgba(99, 102, 241, 0.09);
+      bottom: -100px;
+      right: -80px;
+      animation-delay: 3s;
+    }
+
+    @keyframes pulseGlow {
+      0% { transform: scale(1) translate(0, 0); opacity: 0.7; }
+      100% { transform: scale(1.15) translate(20px, 15px); opacity: 1; }
+    }
+
+    /* Sticky Top Navigation Menu Bar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(9, 10, 16, 0.88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 16px;
+    }
+
+    .nav-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .brand-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #fbbf24, #d97706);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 16px;
+      color: #090a10;
+      box-shadow: 0 0 18px rgba(251, 191, 36, 0.4);
+    }
+
+    .brand-text {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      color: #fff;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 2px 0;
+    }
+
+    .nav-menu::-webkit-scrollbar { display: none; }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 7px 14px;
+      border-radius: 50px;
+      border: 1px solid transparent;
+      background: rgba(255, 255, 255, 0.03);
+      white-space: nowrap;
+      transition: all 0.22s ease;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: #fff;
+      background: rgba(251, 191, 36, 0.15);
+      border-color: rgba(251, 191, 36, 0.48);
+    }
+
+    /* Main Content Container */
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 32px 16px 70px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Hero Banner */
+    .hero {
+      text-align: center;
+      padding: 40px 24px;
+      background: linear-gradient(160deg, rgba(22, 25, 38, 0.86), rgba(11, 13, 21, 0.94));
+      border: 1px solid rgba(251, 191, 36, 0.22);
+      border-radius: 28px;
+      backdrop-filter: blur(18px);
+      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.6);
+      margin-bottom: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 280px;
+      height: 2.5px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .trust-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(16, 185, 129, 0.14);
+      border: 1px solid rgba(16, 185, 129, 0.45);
+      color: #34d399;
+      font-size: 13.5px;
+      font-weight: 700;
+      padding: 6px 18px;
+      border-radius: 50px;
+      margin-bottom: 16px;
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+    }
+
+    .hero h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      background: linear-gradient(90deg, #ffffff 10%, #fde68a 55%, #fbbf24 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      color: #cbd5e1;
+      max-width: 660px;
+      margin: 0 auto 24px;
+      line-height: 1.7;
+    }
+
+    /* Trust & Feature Highlights */
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 680px) {
+      .trust-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 24px; }
+    }
+
+    .trust-box {
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 14px 16px;
+      text-align: center;
+    }
+
+    .trust-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    .trust-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Host Motivation & Success Tips Section */
+    .tips-section {
+      background: linear-gradient(145deg, rgba(24, 28, 44, 0.78), rgba(14, 16, 26, 0.88));
+      border: 1px solid rgba(251, 191, 36, 0.2);
+      border-radius: 24px;
+      padding: 24px;
+      margin-bottom: 34px;
+      backdrop-filter: blur(14px);
+    }
+
+    .tips-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tips-header h2 {
+      font-size: 19px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tips-badge {
+      font-size: 12px;
+      color: var(--gold);
+      background: var(--gold-soft);
+      border: 1px solid rgba(251, 191, 36, 0.35);
+      padding: 4px 12px;
+      border-radius: 50px;
+      font-weight: 600;
+    }
+
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .tips-grid { grid-template-columns: 1fr; }
+    }
+
+    .tip-card {
+      background: rgba(9, 11, 18, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      padding: 16px;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .tip-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(251, 191, 36, 0.4);
+    }
+
+    .tip-num {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      color: #090a10;
+      background: var(--gold);
+      padding: 2px 10px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+
+    .tip-card h3 {
+      font-size: 15.5px;
+      font-weight: 700;
+      color: #f8fafc;
+      margin-bottom: 6px;
+    }
+
+    .tip-card p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* Section Heading */
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .section-head h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .section-head span {
+      font-size: 13.5px;
+      color: var(--text-muted);
+    }
+
+    /* Apps Grid */
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    @media (max-width: 820px) {
+      .apps-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 480px) {
+      .apps-grid { grid-template-columns: 1fr; }
+    }
+
+    .app-card {
+      text-decoration: none;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      backdrop-filter: blur(14px);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .app-card:hover {
+      transform: translateY(-4px);
+      background: var(--surface-hover);
+      border-color: var(--accent, rgba(251, 191, 36, 0.5));
+      box-shadow: 0 14px 32px -8px var(--glow, rgba(0, 0, 0, 0.6));
+    }
+
+    .app-logo {
+      width: 62px;
+      height: 62px;
+      border-radius: 16px;
+      flex-shrink: 0;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+      transition: transform 0.3s ease;
+    }
+
+    .app-card:hover .app-logo {
+      transform: scale(1.06);
+    }
+
+    .app-info { flex-grow: 1; }
+
+    .app-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 17px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .app-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .arrow-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #cbd5e1;
+      font-size: 15px;
+      transition: all 0.25s ease;
+    }
+
+    .app-card:hover .arrow-btn {
+      background: var(--accent, var(--gold));
+      color: #090a10;
+      border-color: transparent;
+      transform: translateX(3px);
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      font-size: 13.5px;
+      color: #94a3b8;
+      line-height: 1.7;
+    }
+
+    .footer strong {
+      color: var(--gold);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Background Lights -->
+  <div class="ambient-orb orb-1"></div>
+  <div class="ambient-orb orb-2"></div>
+
+  <!-- Top Navigation Menu Bar -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <div class="brand-icon">SA</div>
+        <span class="brand-text">SAKIL AGENCY</span>
+      </a>
+      <div class="nav-menu">
+        <a href="index.html" class="nav-link active">Dashboard</a>
+        <a href="kamo.html" class="nav-link">Kamo</a>
+        <a href="tigo.html" class="nav-link">Tigo</a>
+        <a href="sela-anchor.html" class="nav-link">Sela Anchor</a>
+        <a href="crush.html" class="nav-link">Crush</a>
+        <a href="kome-host.html" class="nav-link">Kome Host</a>
+        <a href="chamet.html" class="nav-link">Chamet</a>
+        <a href="olamet.html" class="nav-link">Olamet Lite</a>
+        <a href="mako.html" class="nav-link">Mako</a>
+        <a href="chato.html" class="nav-link">Chato</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Dashboard -->
+  <div class="container">
+    <!-- Hero Welcome Section -->
+    <div class="hero">
+      <div class="trust-pill">&#10004; ১০০% পেমেন্ট ট্রাস্টেড এজেন্সি (100% Trusted Agency)</div>
+      <h1>WELCOME TO SAKIL AGENCY</h1>
+      <p class="hero-sub">
+        আমাদের এজেন্সিতে আপনাকে স্বাগতম! আপনার কঠোর পরিশ্রম ও সৃজনশীলতাকে আমরা সর্বোচ্চ সম্মান করি। প্রতি সপ্তাহের সঠিক সময়ে নিরাপদ ও শতভাগ বিশ্বস্ত পেমেন্টের নিশ্চয়তায় আমরা সবসময় আছি আপনার পাশে।
+      </p>
+
+      <div class="trust-grid">
+        <div class="trust-box">
+          <div class="trust-title">&#128176; ১০০% নিশ্চিত পেমেন্ট</div>
+          <div class="trust-desc">প্রতি সপ্তাহে কোনো ঝামেলা ছাড়াই নির্ধারিত সময়ে সরাসরি পেমেন্ট পরিশোধ করা হয়।</div>
+        </div>
+        <div class="trust-box">
+          <div class="trust-title">&#128202; স্বচ্ছ স্যালারি হিসাব</div>
+          <div class="trust-desc">আপনার অর্জিত প্রতিটি কয়েন, ডলার ও টাকার স্বচ্ছ হিসাব লাইভ পোর্টালে দেখতে পাবেন।</div>
+        </div>
+        <div class="trust-box">
+          <div class="trust-title">&#127942; টপ আর্নার বোনাস</div>
+          <div class="trust-desc">সপ্তাহের সর্বোচ্চ আয়কারী হোস্টদের নাম লিডারবোর্ডের শীর্ষে প্রদর্শিত হয়।</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Host Motivation & Income Growth Tips -->
+    <div class="tips-section">
+      <div class="tips-header">
+        <h2>&#128161; হোস্টদের আয় বৃদ্ধির বিশেষ টিপস ও নির্দেশনা</h2>
+        <span class="tips-badge">সফল হোস্ট হওয়ার গাইডলাইন</span>
+      </div>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <span class="tip-num">টিপস ০১</span>
+          <h3>নিয়মিত অনলাইনে সক্রিয় থাকুন</h3>
+          <p>প্রতিদিন নির্দিষ্ট একটি সময়ে নিয়মিত লাইভে বা কলে যুক্ত থাকলে নতুন ও নিয়মিত ইউজারদের সাথে দ্রুত ভালো সম্পর্ক তৈরি হয় এবং কয়েন আয় দ্বিগুণ বাড়ে।</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-num">টিপস ০২</span>
+          <h3>সুন্দর পরিবেশ ও হাসিখুশি ব্যবহার</h3>
+          <p>কথা বলার সময় পর্যাপ্ত আলো, পরিষ্কার ব্যাকগ্রাউন্ড এবং আন্তরিক ব্যবহার বজায় রাখুন। ইউজাররা সম্মান ও ভালো আচরণ পেলে দীর্ঘসময় কথা বলতে আগ্রহী হয়।</p>
+        </div>
+        <div class="tip-card">
+          <span class="tip-num">টিপস ০৩</span>
+          <h3>সাপ্তাহিক টার্গেট পূরণ করুন</h3>
+          <p>প্রতি সপ্তাহে নিজের জন্য একটি নির্দিষ্ট কয়েন টার্গেট সেট করুন। নিয়মিত টার্গেট পূরণ করলে আপনার সাপ্তাহিক স্যালারি ও র‍্যাংকিং দুটোই দ্রুত বৃদ্ধি পাবে।</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- App Categories Section -->
+    <div class="section-head">
+      <h2>&#128241; আপনার অ্যাপ ক্যাটাগরি নির্বাচন করুন</h2>
+      <span>নিচের যেকোনো অ্যাপে ক্লিক করে সাপ্তাহিক স্যালারি শিট দেখুন</span>
+    </div>
+
+    <div class="apps-grid">
+      <!-- 1. KAMO -->
+      <a href="kamo.html" class="app-card" style="--accent: #d946ef; --glow: rgba(217, 70, 239, 0.35);">
+        <svg class="app-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gKamo" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#7c3aed"/>
+              <stop offset="100%" stop-color="#ec4899"/>
+            </linearGradient>
+          </defs>
+          <rect width="100" height="100" rx="24" fill="#0d0918"/>
+          <rect x="14" y="16" width="72" height="68" rx="18" fill="url(#gKamo)"/>
+          <path d="M32 32 H44 V48 L59 32 H73 L54 51 L74 70 H59 L44 54 V70 H32 Z" fill="#fff"/>
+          <circle cx="74" cy="70" r="14" fill="#facc15" stroke="#0d0918" stroke-width="2"/>
+          <text x="74" y="75" text-anchor="middle" font-family="Arial" font-weight="900" font-size="15" fill="#78350f">$</text>
+        </svg>
+        <div class="app-info">
+          <div class="app-title">Kamo</div>
+          <div class="app-sub">সাপ্তাহিক স্যালারি ও লিডারবোর্ড দেখুন</div>
+        </div>
+        <div class="arrow-btn">&#8594;</div>
+      </a>
+
+      <!-- 2. TIGO -->
+      <a href="tigo.html" class="app-card" style="--accent: #a855f7; --glow: rgba(168, 85, 247, 0.35);">
+        <svg class="app-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gTigo" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#9333ea"/>
+              <stop offset="100%" stop-color="#c026d3"/>
+            </linearGradient>
+          </defs>
+          <rect width="100" height="100" rx="24" fill="url(#gTigo)"/>
+          <path d="M22 48 C22 33 34 24 50 24 C66 24 78 33 78 48 C78 63 66 72 50 72 C44 72 38 70 33 67 L22 73 L26 61 C23 57 22 53 22 48 Z" fill="#fff"/>
+          <text x="50" y="53" text-anchor="middle" font-family="Arial" font-weight="900" font-size="19" fill="#9333ea">Tigo</text>
+          <path d="M68 62 C66 59 61 60 61 64 C61 68 68 73 68 73 C68 73 75 68 75 64 C75 60 70 59 68 62 Z" fill="#f43f5e" stroke="#fff" stroke-width="1.5"/>
+        </svg>
+        <div class="app-info">
+          <div class="app-title">Tigo</div>
+          <div class="app-sub">সাপ্তাহিক স্যালারি ও লিডারবোর্ড দেখুন</div>
+        </div>
+        <div class="arrow-btn">&#8594;</div>
+      </a>
+
+      <!-- 3. SELA ANCHOR -->
+      <a href="sela-anchor.html" class="app-card" style="--accent: #38bdf8; --glow: rgba(56, 189, 248, 0.35);">
+        <svg class="app-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gSela" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#6366f1"/>
+              <stop offset="50%" stop-color="#38bdf8"/>
+              <stop offset="100%" stop-color="#f472b6"/>
+            </linearGradient>
+          </defs>
+          <rect width="100" height="100" rx="24" fill="url(#gSela)"/>
+          <circle cx="38" cy="58" r="19" fill="#fbcfe8"/>
+          <circle cx="63" cy="54" r="21" fill="#e0f2fe"/>
+          <circle cx="34" cy="55" r="2.5" fill="#1e293b"/>
+          <circle cx="43" cy="55" r="2.5" fill="#1e293b"/>
+          <circle cx="58" cy="51" r="2.5" fill="#1e293b"/>
+          <circle cx="68" cy="51" r="2.5" fill="#1e293b"/>
+          <path d="M61 55 L65 55 L63 58 Z" fill="#f59e0b"/>
+        </svg>
+        <div class="app-info">
+          <div class="app-title">Sela Anchor</div>
+          <div class="app-sub">সাপ্তাহিক স্যালারি ও লিডারবোর্ড দেখুন</div>
+        </div>
+        <div class="arrow-btn">&#8594;</div>
+      </a>
+
+      <!-- 4. CRUSH -->
+      <a href="crush.html" class="app-card" style="--accent: #e879f9; --glow: rgba(232, 121, 249, 0.35);">
+        <svg class="app-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gCrush" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#6366f1"/>
+              <stop offset="100%" stop-color="#ec4899"/>
+            </linearGradient>
+          </defs>
+          <rect width="100" height="100" rx="24" fill="url(#gCrush)"/>
+          <circle cx="50" cy="44" r="22" fill="rgba(255,255,255,0.25)"/>
+          <path d="M50 28 C38 28 32 37 32 47 C32 56 38 62 46 64 L54 64 C62 62 67 55 67 46 C67 36 60 28 50 28 Z" fill="#fff"/>
+          <rect x="24" y="70" width="52" height="14" rx="7" fill="#fff"/>
+          <text x="50" y="80" text-anchor="middle" font-family="Arial" font-weight="800" font-size="10" fill="#9333ea">Host</text>
+        </svg>
+        <div class="app-info">
+          <div class="app-title">Crush</div>
+          <div class="app-sub">সাপ্তাহিক স্যালারি ও লিডারবোর্ড দেখুন</div>
+        </div>
+        <div class="arrow-btn">&#8594;</div>
+      </a>
+
+      <!-- 5. KOME HOST -->
+      <a href="kome-host.html" class="app-card" style="--accent: #8b5cf6; --glow: rgba(139, 92, 246, 0.35);">
+        <svg class="app-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gKome" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#7c3aed"/>
+              <stop offset="100%" stop-color="#6d28d9"/>
+            </linearGradient>
+          </defs>
+          <rect width="100" height="100" rx="24" fill="url(#gKome)"/>
+          <rect x="22" y="28" width="42" height="34" rx="10" fill="#fff"/>
+          <path d="M64 38 L78 29 V61 L64 52 Z" fill="#fff"/>
+          <circle cx="37" cy="43" r="2.5" fill="#6d28d9"/>
+          <circle cx="49" cy="43" r="2.5" fill="#6d28d9"/>
+          <path d="M38 49 Q43 54 48 49" stroke="#ec4899" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <rect x="24" y="69" width="52" height="15" rx="7.5" fill="#ec4899"/>
+          <text x="50" y="80" text-anchor="middle" font-family="Arial" font-weight="800" font-size="10" fill="#fff">New</text>
+        </svg>
+        <div class="app-info">
+          <div class="app-title">Kome Host</div>
+          <div class="app-sub">সাপ্তাহিক স্যালারি ও লিডারবোর্ড দেখুন</div>
+        </div>
+        <div class="arrow-btn">&#8594;</div>
+      </a>
+
+      <!-- 6. CHAMET -->
+      <a href="chamet.html" class="app-card" style="--accent: #ec4899; --glow: rgba(236, 72, 153, 0.38);">
+        <svg class="app-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gChamet" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#d946ef"/>
+              <stop offset="100%" stop-color="#ec4899"/>
+            </linearGradient>
+          </defs>
+          <rect width="100" height="100" rx="24" fill="#ffffff"/>
+          <circle cx="50" cy="48" r="32" fill="url(#gChamet)"/>
+          <path d="M30 70 Q40 64 50 70 Q60 64 70 70 L66 78 Q50 72 34 78 Z" fill="url(#gChamet)"/>
+          <circle cx="50" cy="47" r="14" fill="none" stroke="#fff" stroke-width="4.5"/>
+          <circle cx="50" cy="47" r="5" fill="#fff"/>
+        </svg>
+        <div class="app-info">
+          <div class="app-title">Chamet</div>
+          <div class="app-sub">সাপ্তাহিক স্যালারি ও লিডারবোর্ড দেখুন</div>
+        </div>
+        <div class="arrow-btn">&#8594;</div>
+      </a>
+
+      <!-- 7. OLAMET LITE -->
+      <a href="olamet.html" class="app-card" style="--accent: #f43f5e; --glow: rgba(244, 63, 94, 0.38);">
+        <svg class="app-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gOlamet" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#f97316"/>
+              <stop offset="50%" stop-color="#f43f5e"/>
+              <stop offset="100%" stop-color="#db2777"/>
+            </linearGradient>
+          </defs>
+          <rect width="100" height="100" rx="24" fill="url(#gOlamet)"/>
+          <circle cx="48" cy="46" r="19" fill="none" stroke="#fff" stroke-width="5"/>
+          <path d="M44 39 L56 46 L44 53 Z" fill="#fff"/>
+          <rect x="58" y="22" width="26" height="13" rx="6.5" fill="#fff"/>
+          <text x="71" y="31" text-anchor="middle" font-family="Arial" font-weight="800" font-size="8.5" fill="#e11d48">Lite</text>
+          <text x="50" y="81" text-anchor="middle" font-family="Arial" font-weight="800" font-size="13" fill="#fff">Olamet</text>
+        </svg>
+        <div class="app-info">
+          <div class="app-title">Olamet Lite</div>
+          <div class="app-sub">সাপ্তাহিক স্যালারি ও লিডারবোর্ড দেখুন</div>
+        </div>
+        <div class="arrow-btn">&#8594;</div>
+      </a>
+
+      <!-- 8. MAKO -->
+      <a href="mako.html" class="app-card" style="--accent: #6366f1; --glow: rgba(99, 102, 241, 0.38);">
+        <svg class="app-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gMako" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#4f46e5"/>
+              <stop offset="100%" stop-color="#7c3aed"/>
+            </linearGradient>
+          </defs>
+          <rect width="100" height="100" rx="24" fill="url(#gMako)"/>
+          <circle cx="42" cy="52" r="18" fill="#fff"/>
+          <circle cx="58" cy="52" r="18" fill="#fff"/>
+          <path d="M50 32 C48 29 44 30 44 33 C44 36 50 40 50 40 C50 40 56 36 56 33 C56 30 52 29 50 32 Z" fill="#34d399"/>
+        </svg>
+        <div class="app-info">
+          <div class="app-title">Mako</div>
+          <div class="app-sub">সাপ্তাহিক স্যালারি ও লিডারবোর্ড দেখুন</div>
+        </div>
+        <div class="arrow-btn">&#8594;</div>
+      </a>
+
+      <!-- 9. CHATO -->
+      <a href="chato.html" class="app-card" style="--accent: #fb7185; --glow: rgba(251, 113, 133, 0.38);">
+        <svg class="app-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gChato" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#f43f5e"/>
+              <stop offset="100%" stop-color="#e11d48"/>
+            </linearGradient>
+          </defs>
+          <rect width="100" height="100" rx="24" fill="url(#gChato)"/>
+          <path d="M50 24 C34 24 23 35 23 49 C23 63 34 74 50 74 L36 81 L42 72 C62 74 77 63 77 49 C77 35 66 24 50 24 Z" fill="#0f172a"/>
+          <path d="M50 38 C50 38 58 46 58 53 C58 58 54 61 50 61 C46 61 42 58 42 53 C42 49 46 45 47 43 C47 46 49 47 50 47 C51 44 50 38 50 38 Z" fill="#fff"/>
+        </svg>
+        <div class="app-info">
+          <div class="app-title">Chato</div>
+          <div class="app-sub">সাপ্তাহিক স্যালারি ও লিডারবোর্ড দেখুন</div>
+        </div>
+        <div class="arrow-btn">&#8594;</div>
+      </a>
+    </div>
+
+    <div class="footer">
+      <strong>SAKIL AGENCY</strong> — ১০০% পেমেন্ট ট্রাস্টেড অফিশিয়াল হোস্ট ম্যানেজমেন্ট পোর্টাল<br>
+      &copy; 2026 SAKIL AGENCY. সর্বস্বত্ব সংরক্ষিত।
+    </div>
+  </div>
+
+</body>
+</html>
