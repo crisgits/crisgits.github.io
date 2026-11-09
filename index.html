@@ -1,947 +1,413 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WELCOME TO SAKIL AGENCY | Official Host Portal</title>
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg-base: #07080d;
-      --surface: rgba(18, 20, 30, 0.78);
-      --surface-hover: rgba(26, 29, 44, 0.94);
-      --border: rgba(255, 255, 255, 0.09);
-      --gold: #fbbf24;
-      --gold-soft: rgba(251, 191, 36, 0.14);
-      --emerald: #10b981;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-      -webkit-touch-callout: none;
-    }
-
-    img, svg {
-      pointer-events: none;
-      -webkit-user-drag: none;
-      user-drag: none;
-    }
-
-    body {
-      font-family: 'Hind Siliguri', 'Plus Jakarta Sans', sans-serif;
-      background-color: var(--bg-base);
-      color: var(--text-main);
-      min-height: 100vh;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    /* Ambient Neutral Dark Glow Effects */
-    .ambient-orb {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(115px);
-      z-index: 0;
-      pointer-events: none;
-      animation: pulseGlow 9s ease-in-out infinite alternate;
-    }
-
-    .orb-1 {
-      width: 400px;
-      height: 400px;
-      background: rgba(251, 191, 36, 0.09);
-      top: -90px;
-      left: -90px;
-    }
-
-    .orb-2 {
-      width: 430px;
-      height: 430px;
-      background: rgba(99, 102, 241, 0.09);
-      bottom: -100px;
-      right: -80px;
-      animation-delay: 3s;
-    }
-
-    @keyframes pulseGlow {
-      0% { transform: scale(1) translate(0, 0); opacity: 0.7; }
-      100% { transform: scale(1.15) translate(20px, 15px); opacity: 1; }
-    }
-
-    /* Sticky Top Header with Left 3-Line Menu & User Photo */
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 40;
-      background: rgba(9, 10, 16, 0.9);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--border);
-      padding: 12px 16px;
-    }
-
-    .nav-inner {
-      max-width: 1080px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .menu-toggle {
-      width: 40px;
-      height: 40px;
-      border-radius: 11px;
-      background: rgba(251, 191, 36, 0.14);
-      border: 1px solid rgba(251, 191, 36, 0.42);
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-      cursor: pointer;
-      transition: 0.2s;
-      flex-shrink: 0;
-    }
-
-    .menu-toggle:hover { background: rgba(251, 191, 36, 0.25); }
-
-    .menu-toggle span {
-      display: block;
-      width: 20px;
-      height: 2.2px;
-      background: #fff;
-      border-radius: 2px;
-    }
-
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      text-decoration: none;
-    }
-
-    .brand-photo {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid var(--gold);
-      box-shadow: 0 0 14px rgba(251, 191, 36, 0.4);
-      background: #141622;
-    }
-
-    .brand-text {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 16px;
-      font-weight: 800;
-      letter-spacing: 0.8px;
-      color: #fff;
-    }
-
-    /* Left Slide-out Sidebar */
-    .sidebar-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(4, 5, 10, 0.78);
-      backdrop-filter: blur(6px);
-      z-index: 90;
-      display: none;
-    }
-
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: -290px;
-      width: 275px;
-      height: 100vh;
-      background: #0c0e17;
-      border-right: 1px solid rgba(251, 191, 36, 0.25);
-      z-index: 100;
-      display: flex;
-      flex-direction: column;
-      transition: left 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      box-shadow: 12px 0 40px rgba(0, 0, 0, 0.78);
-    }
-
-    .sidebar.open { left: 0; }
-
-    .sidebar-header {
-      padding: 16px 18px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .sidebar-brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 800;
-      font-size: 14px;
-      color: var(--gold);
-      letter-spacing: 0.6px;
-    }
-
-    .sidebar-brand img {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 1.5px solid var(--gold);
-    }
-
-    .sidebar-close {
-      background: rgba(255, 255, 255, 0.06);
-      border: none;
-      color: #cbd5e1;
-      width: 30px;
-      height: 30px;
-      border-radius: 8px;
-      font-size: 18px;
-      cursor: pointer;
-    }
-
-    .sidebar-menu {
-      flex-grow: 1;
-      overflow-y: auto;
-      padding: 14px 12px 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .menu-label {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 10.5px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      color: #64748b;
-      padding: 8px 10px 4px;
-    }
-
-    .side-link {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      color: #cbd5e1;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 13.5px;
-      font-weight: 600;
-      padding: 10px 12px;
-      border-radius: 12px;
-      border: 1px solid transparent;
-      transition: 0.2s;
-    }
-
-    .side-link:hover {
-      background: rgba(255, 255, 255, 0.05);
-      color: #fff;
-    }
-
-    .side-link.active {
-      background: rgba(251, 191, 36, 0.16);
-      border-color: rgba(251, 191, 36, 0.48);
-      color: #fff;
-    }
-
-    .side-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    /* Main Content Container */
-    .container {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 32px 16px 70px;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Hero Banner */
-    .hero {
-      text-align: center;
-      padding: 40px 24px;
-      background: linear-gradient(160deg, rgba(22, 25, 38, 0.86), rgba(11, 13, 21, 0.94));
-      border: 1px solid rgba(251, 191, 36, 0.22);
-      border-radius: 28px;
-      backdrop-filter: blur(18px);
-      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.6);
-      margin-bottom: 28px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 280px;
-      height: 2.5px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    }
-
-    .trust-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      background: rgba(16, 185, 129, 0.14);
-      border: 1px solid rgba(16, 185, 129, 0.45);
-      color: #34d399;
-      font-size: 13.5px;
-      font-weight: 700;
-      padding: 6px 18px;
-      border-radius: 50px;
-      margin-bottom: 16px;
-      box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
-    }
-
-    .hero h1 {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 32px;
-      font-weight: 800;
-      letter-spacing: 0.6px;
-      background: linear-gradient(90deg, #ffffff 10%, #fde68a 55%, #fbbf24 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 12px;
-      text-transform: uppercase;
-    }
-
-    .hero-sub {
-      font-size: 16px;
-      color: #cbd5e1;
-      max-width: 660px;
-      margin: 0 auto 24px;
-      line-height: 1.7;
-    }
-
-    /* Trust & Feature Highlights */
-    .trust-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      max-width: 820px;
-      margin: 0 auto;
-    }
-
-    @media (max-width: 680px) {
-      .trust-grid { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 24px; }
-    }
-
-    .trust-box {
-      background: rgba(255, 255, 255, 0.035);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 16px;
-      padding: 14px 16px;
-      text-align: center;
-    }
-
-    .trust-title {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--gold);
-      margin-bottom: 4px;
-    }
-
-    .trust-desc {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    /* Host Motivation & Success Tips Section */
-    .tips-section {
-      background: linear-gradient(145deg, rgba(24, 28, 44, 0.78), rgba(14, 16, 26, 0.88));
-      border: 1px solid rgba(251, 191, 36, 0.2);
-      border-radius: 24px;
-      padding: 24px;
-      margin-bottom: 34px;
-      backdrop-filter: blur(14px);
-    }
-
-    .tips-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 18px;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .tips-header h2 {
-      font-size: 19px;
-      font-weight: 700;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .tips-badge {
-      font-size: 12px;
-      color: var(--gold);
-      background: var(--gold-soft);
-      border: 1px solid rgba(251, 191, 36, 0.35);
-      padding: 4px 12px;
-      border-radius: 50px;
-      font-weight: 600;
-    }
-
-    .tips-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-
-    @media (max-width: 768px) {
-      .tips-grid { grid-template-columns: 1fr; }
-    }
-
-    .tip-card {
-      background: rgba(9, 11, 18, 0.65);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 16px;
-      padding: 16px;
-      transition: transform 0.25s ease, border-color 0.25s ease;
-    }
-
-    .tip-card:hover {
-      transform: translateY(-2px);
-      border-color: rgba(251, 191, 36, 0.4);
-    }
-
-    .tip-num {
-      display: inline-block;
-      font-size: 12px;
-      font-weight: 700;
-      color: #090a10;
-      background: var(--gold);
-      padding: 2px 10px;
-      border-radius: 6px;
-      margin-bottom: 8px;
-    }
-
-    .tip-card h3 {
-      font-size: 15.5px;
-      font-weight: 700;
-      color: #f8fafc;
-      margin-bottom: 6px;
-    }
-
-    .tip-card p {
-      font-size: 13.5px;
-      color: var(--text-muted);
-      line-height: 1.55;
-    }
-
-    /* Section Heading */
-    .section-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .section-head h2 {
-      font-size: 20px;
-      font-weight: 700;
-      color: #fff;
-    }
-
-    .section-head span {
-      font-size: 13.5px;
-      color: var(--text-muted);
-    }
-
-    /* Apps Grid */
-    .apps-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    @media (max-width: 820px) {
-      .apps-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (max-width: 480px) {
-      .apps-grid { grid-template-columns: 1fr; }
-    }
-
-    .app-card {
-      text-decoration: none;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 20px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      backdrop-filter: blur(14px);
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .app-card:hover {
-      transform: translateY(-4px);
-      background: var(--surface-hover);
-      border-color: var(--accent, rgba(251, 191, 36, 0.5));
-      box-shadow: 0 14px 32px -8px var(--glow, rgba(0, 0, 0, 0.6));
-    }
-
-    .app-logo {
-      width: 62px;
-      height: 62px;
-      border-radius: 16px;
-      flex-shrink: 0;
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
-      transition: transform 0.3s ease;
-    }
-
-    .app-card:hover .app-logo {
-      transform: scale(1.06);
-    }
-
-    .app-info { flex-grow: 1; }
-
-    .app-title {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 17px;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 4px;
-    }
-
-    .app-sub {
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .arrow-btn {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #cbd5e1;
-      font-size: 15px;
-      transition: all 0.25s ease;
-    }
-
-    .app-card:hover .arrow-btn {
-      background: var(--accent, var(--gold));
-      color: #090a10;
-      border-color: transparent;
-      transform: translateX(3px);
-    }
-
-    .footer {
-      text-align: center;
-      margin-top: 48px;
-      padding-top: 24px;
-      border-top: 1px solid rgba(255, 255, 255, 0.07);
-      font-size: 13.5px;
-      color: #94a3b8;
-      line-height: 1.7;
-    }
-
-    .footer strong {
-      color: var(--gold);
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Power-Director - Video Editing Software for Windows 11 | Download & Setup Guide</title>
+<meta name="description" content="Power-Director optimizes professional desktop software configurations with an advanced suite of tools that streamline workflow and enable seamless video editing on Windows 11. Simple download and setup guide for beginners.">
+<meta name="keywords" content="cyber-link, cyberlink powerdirector, cyberlink powerdirector 2026, cyberlink powerdirector install setup 2026, cyberlink powerdvd ultra dvd support, cyberlink screen recorder 4 deluxe, motion effects, powerdirector download windows 11, windows video editing software">
+<meta name="author" content="Power-Director">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#1f6feb">
+<link rel="canonical" href="https://github.com/crisgits/Power-Director">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Power-Director - Video Editing Software for Windows 11">
+<meta property="og:description" content="Power Director optimizes professional desktop software configurations with an advanced suite of tools that streamline workflow and enable seamless video editing.">
+<meta property="og:url" content="https://github.com/crisgits/Power-Director">
+<meta property="og:site_name" content="Power-Director">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Power-Director - Video Editing Software for Windows 11">
+<meta name="twitter:description" content="Power Director optimizes professional desktop software configurations with an advanced suite of tools that streamline workflow and enable seamless video editing.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Power-Director",
+  "operatingSystem": "Windows 11, Windows 10",
+  "applicationCategory": "MultimediaApplication",
+  "description": "Power Director optimizes professional desktop software configurations with an advanced suite of tools that streamline workflow and enable seamless video editing.",
+  "url": "https://github.com/crisgits/Power-Director",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    padding: 0;
+    background: #eef2f7;
+    font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    color: #1f2733;
+    line-height: 1.7;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 20px 80px;
+  }
+  .hero {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 40px 32px;
+    box-shadow: 0 10px 30px rgba(22, 42, 74, 0.10);
+    border: 1px solid #e2e8f1;
+    text-align: center;
+  }
+  h1 {
+    font-size: 2.1rem;
+    line-height: 1.25;
+    margin: 0 0 18px;
+    color: #10233f;
+    letter-spacing: -0.5px;
+  }
+  .lead {
+    font-size: 1.08rem;
+    color: #41506a;
+    margin: 0 auto 28px;
+    max-width: 700px;
+  }
+  .btn {
+    display: inline-block;
+    padding: 16px 34px;
+    font-size: 1.06rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 12px;
+    background: #1f6feb;
+    background-image: linear-gradient(135deg, #2b7a78 0%, #1f6feb 55%, #6f42c1 100%);
+    box-shadow: 0 8px 20px rgba(31, 111, 235, 0.35);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(31, 111, 235, 0.45);
+  }
+  .btn-note {
+    display: block;
+    margin-top: 14px;
+    font-size: 0.9rem;
+    color: #6b7a90;
+  }
+  section {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 32px;
+    margin-top: 26px;
+    box-shadow: 0 6px 20px rgba(22, 42, 74, 0.07);
+    border: 1px solid #e2e8f1;
+  }
+  h2 {
+    font-size: 1.42rem;
+    margin: 0 0 16px;
+    color: #10233f;
+    letter-spacing: -0.3px;
+  }
+  h3 {
+    font-size: 1.08rem;
+    margin: 24px 0 8px;
+    color: #1b3557;
+  }
+  p { margin: 0 0 16px; }
+  p:last-child { margin-bottom: 0; }
+  ul, ol { margin: 0 0 16px; padding-left: 24px; }
+  li { margin-bottom: 10px; }
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 8px;
+  }
+  .card {
+    flex: 1 1 240px;
+    background: #f7f9fc;
+    border: 1px solid #e2e8f1;
+    border-radius: 14px;
+    padding: 18px 20px;
+  }
+  .card h4 {
+    margin: 0 0 6px;
+    font-size: 1rem;
+    color: #1b3557;
+  }
+  .card p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #4a5a73;
+  }
+  .step {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  .step-num {
+    flex: 0 0 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #1f6feb;
+    color: #ffffff;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    box-shadow: 0 4px 10px rgba(31, 111, 235, 0.3);
+  }
+  .step-body h4 {
+    margin: 4px 0 4px;
+    font-size: 1.02rem;
+    color: #10233f;
+  }
+  .step-body p { margin: 0; font-size: 0.97rem; color: #4a5a73; }
+  .callout {
+    background: #f0f7ff;
+    border-left: 5px solid #1f6feb;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 20px 0;
+    font-size: 0.97rem;
+    color: #274060;
+  }
+  .link-strong {
+    color: #1f6feb;
+    font-weight: 700;
+    text-decoration: none;
+    word-break: break-all;
+  }
+  .link-strong:hover { text-decoration: underline; }
+  .faq-item {
+    border-bottom: 1px solid #e6ecf5;
+    padding: 16px 0;
+  }
+  .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .faq-item h4 {
+    margin: 0 0 6px;
+    font-size: 1.01rem;
+    color: #10233f;
+  }
+  .faq-item p { margin: 0; color: #4a5a73; font-size: 0.97rem; }
+  footer {
+    text-align: center;
+    margin-top: 34px;
+    font-size: 0.88rem;
+    color: #7a889c;
+  }
+  @media (max-width: 600px) {
+    body { font-size: 16px; }
+    h1 { font-size: 1.6rem; }
+    .hero, section { padding: 24px 20px; }
+    .btn { display: block; padding: 16px 20px; }
+  }
+</style>
 </head>
-<body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
+<body>
+<div class="page">
 
-  <!-- Ambient Background Lights -->
-  <div class="ambient-orb orb-1"></div>
-  <div class="ambient-orb orb-2"></div>
-
-  <!-- Top Header with Left 3-Line Menu & User Photo -->
-  <nav class="navbar">
-    <div class="nav-inner">
-      <button class="menu-toggle" onclick="openSidebar()" aria-label="Open Menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <a href="index.html" class="nav-brand">
-        <img src="logo.png" alt="Sakil" class="brand-photo" onerror="this.src='https://via.placeholder.com/40/fbbf24/090a10?text=SA'">
-        <span class="brand-text">SAKIL AGENCY</span>
-      </a>
-    </div>
-  </nav>
-
-  <!-- Left Slide-out Sidebar -->
-  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
-  <aside class="sidebar" id="sidebar">
-    <div class="sidebar-header">
-      <div class="sidebar-brand">
-        <img src="logo.png" alt="Sakil" onerror="this.src='https://via.placeholder.com/30/fbbf24/090a10?text=SA'">
-        <span>SAKIL AGENCY</span>
-      </div>
-      <button class="sidebar-close" onclick="closeSidebar()">&times;</button>
-    </div>
-
-    <div class="sidebar-menu">
-      <div class="menu-label">Main Menu</div>
-      <a href="index.html" class="side-link active">
-        <span class="side-dot" style="background:#fbbf24;"></span>
-        <span>Dashboard</span>
-      </a>
-
-      <div class="menu-label">App Categories</div>
-      <a href="kamo.html" class="side-link">
-        <span class="side-dot" style="background:#d946ef;"></span>
-        <span>Kamo</span>
-      </a>
-      <a href="tigo.html" class="side-link">
-        <span class="side-dot" style="background:#a855f7;"></span>
-        <span>Tigo</span>
-      </a>
-      <a href="sela-anchor.html" class="side-link">
-        <span class="side-dot" style="background:#38bdf8;"></span>
-        <span>Sela Anchor</span>
-      </a>
-      <a href="crush.html" class="side-link">
-        <span class="side-dot" style="background:#e879f9;"></span>
-        <span>Crush</span>
-      </a>
-      <a href="kome-host.html" class="side-link">
-        <span class="side-dot" style="background:#8b5cf6;"></span>
-        <span>Kome Host</span>
-      </a>
-      <a href="chamet.html" class="side-link">
-        <span class="side-dot" style="background:#ec4899;"></span>
-        <span>Chamet</span>
-      </a>
-      <a href="olamet.html" class="side-link">
-        <span class="side-dot" style="background:#f43f5e;"></span>
-        <span>Olamet Lite</span>
-      </a>
-      <a href="mako.html" class="side-link">
-        <span class="side-dot" style="background:#6366f1;"></span>
-        <span>Mako</span>
-      </a>
-      <a href="chato.html" class="side-link">
-        <span class="side-dot" style="background:#fb7185;"></span>
-        <span>Chato</span>
-      </a>
-    </div>
-  </aside>
-
-  <!-- Main Dashboard -->
-  <div class="container">
-    <!-- Hero Welcome Section -->
-    <div class="hero">
-      <div class="trust-pill">&#10004; ১০০% পেমেন্ট ট্রাস্টেড এজেন্সি (100% Trusted Agency)</div>
-      <h1>WELCOME TO SAKIL AGENCY</h1>
-      <p class="hero-sub">
-        আমাদের এজেন্সিতে আপনাকে স্বাগতম! আপনার কঠোর পরিশ্রম ও সৃজনশীলতাকে আমরা সর্বোচ্চ সম্মান করি। প্রতি সপ্তাহের সঠিক সময়ে নিরাপদ ও শতভাগ বিশ্বস্ত পেমেন্টের নিশ্চয়তায় আমরা সবসময় আছি আপনার পাশে।
-      </p>
-
-      <div class="trust-grid">
-        <div class="trust-box">
-          <div class="trust-title">&#128176; ১০০% নিশ্চিত পেমেন্ট</div>
-          <div class="trust-desc">প্রতি সপ্তাহে কোনো ঝামেলা ছাড়াই নির্ধারিত সময়ে সরাসরি পেমেন্ট পরিশোধ করা হয়।</div>
-        </div>
-        <div class="trust-box">
-          <div class="trust-title">&#128202; স্বচ্ছ স্যালারি হিসাব</div>
-          <div class="trust-desc">আপনার অর্জিত প্রতিটি কয়েন, ডলার ও টাকার স্বচ্ছ হিসাব লাইভ পোর্টালে দেখতে পাবেন।</div>
-        </div>
-        <div class="trust-box">
-          <div class="trust-title">&#127942; টপ আর্নার বোনাস</div>
-          <div class="trust-desc">সপ্তাহের সর্বোচ্চ আয়কারী হোস্টদের নাম লিডারবোর্ডের শীর্ষে প্রদর্শিত হয়।</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Host Motivation & Income Growth Tips -->
-    <div class="tips-section">
-      <div class="tips-header">
-        <h2>&#128161; হোস্টদের আয় বৃদ্ধির বিশেষ টিপস ও নির্দেশনা</h2>
-        <span class="tips-badge">সফল হোস্ট হওয়ার গাইডলাইন</span>
-      </div>
-      <div class="tips-grid">
-        <div class="tip-card">
-          <span class="tip-num">টিপস ০১</span>
-          <h3>নিয়মিত অনলাইনে সক্রিয় থাকুন</h3>
-          <p>প্রতিদিন নির্দিষ্ট একটি সময়ে নিয়মিত লাইভে বা কলে যুক্ত থাকলে নতুন ও নিয়মিত ইউজারদের সাথে দ্রুত ভালো সম্পর্ক তৈরি হয় এবং কয়েন আয় দ্বিগুণ বাড়ে।</p>
-        </div>
-        <div class="tip-card">
-          <span class="tip-num">টিপস ০২</span>
-          <h3>সুন্দর পরিবেশ ও হাসিখুশি ব্যবহার</h3>
-          <p>কথা বলার সময় পর্যাপ্ত আলো, পরিষ্কার ব্যাকগ্রাউন্ড এবং আন্তরিক ব্যবহার বজায় রাখুন। ইউজাররা সম্মান ও ভালো আচরণ পেলে দীর্ঘসময় কথা বলতে আগ্রহী হয়।</p>
-        </div>
-        <div class="tip-card">
-          <span class="tip-num">টিপস ০৩</span>
-          <h3>সাপ্তাহিক টার্গেট পূরণ করুন</h3>
-          <p>প্রতি সপ্তাহে নিজের জন্য একটি নির্দিষ্ট কয়েন টার্গেট সেট করুন। নিয়মিত টার্গেট পূরণ করলে আপনার সাপ্তাহিক স্যালারি ও র‍্যাংকিং দুটোই দ্রুত বৃদ্ধি পাবে।</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- App Categories Section -->
-    <div class="section-head">
-      <h2>&#128241; আপনার অ্যাপ ক্যাটাগরি নির্বাচন করুন</h2>
-      <span>নিচের যেকোনো অ্যাপে ক্লিক করে সাপ্তাহিক স্যালারি শিট দেখুন</span>
-    </div>
-
-    <div class="apps-grid">
-      <!-- 1. KAMO -->
-      <a href="kamo.html" class="app-card" style="--accent: #d946ef; --glow: rgba(217, 70, 239, 0.35);">
-        <svg class="app-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="gKamo" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#7c3aed"/>
-              <stop offset="100%" stop-color="#ec4899"/>
-            </linearGradient>
-          </defs>
-          <rect width="100" height="100" rx="24" fill="#0d0918"/>
-          <rect x="14" y="16" width="72" height="68" rx="18" fill="url(#gKamo)"/>
-          <path d="M32 32 H44 V48 L59 32 H73 L54 51 L74 70 H59 L44 54 V70 H32 Z" fill="#fff"/>
-          <circle cx="74" cy="70" r="14" fill="#facc15" stroke="#0d0918" stroke-width="2"/>
-          <text x="74" y="75" text-anchor="middle" font-family="Arial" font-weight="900" font-size="15" fill="#78350f">$</text>
-        </svg>
-        <div class="app-info">
-          <div class="app-title">Kamo</div>
-          <div class="app-sub">সাপ্তাহিক স্যালারি ও লিডারবোর্ড দেখুন</div>
-        </div>
-        <div class="arrow-btn">&#8594;</div>
-      </a>
-
-      <!-- 2. TIGO -->
-      <a href="tigo.html" class="app-card" style="--accent: #a855f7; --glow: rgba(168, 85, 247, 0.35);">
-        <svg class="app-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="gTigo" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#9333ea"/>
-              <stop offset="100%" stop-color="#c026d3"/>
-            </linearGradient>
-          </defs>
-          <rect width="100" height="100" rx="24" fill="url(#gTigo)"/>
-          <path d="M22 48 C22 33 34 24 50 24 C66 24 78 33 78 48 C78 63 66 72 50 72 C44 72 38 70 33 67 L22 73 L26 61 C23 57 22 53 22 48 Z" fill="#fff"/>
-          <text x="50" y="53" text-anchor="middle" font-family="Arial" font-weight="900" font-size="19" fill="#9333ea">Tigo</text>
-          <path d="M68 62 C66 59 61 60 61 64 C61 68 68 73 68 73 C68 73 75 68 75 64 C75 60 70 59 68 62 Z" fill="#f43f5e" stroke="#fff" stroke-width="1.5"/>
-        </svg>
-        <div class="app-info">
-          <div class="app-title">Tigo</div>
-          <div class="app-sub">সাপ্তাহিক স্যালারি ও লিডারবোর্ড দেখুন</div>
-        </div>
-        <div class="arrow-btn">&#8594;</div>
-      </a>
-
-      <!-- 3. SELA ANCHOR -->
-      <a href="sela-anchor.html" class="app-card" style="--accent: #38bdf8; --glow: rgba(56, 189, 248, 0.35);">
-        <svg class="app-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="gSela" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#6366f1"/>
-              <stop offset="50%" stop-color="#38bdf8"/>
-              <stop offset="100%" stop-color="#f472b6"/>
-            </linearGradient>
-          </defs>
-          <rect width="100" height="100" rx="24" fill="url(#gSela)"/>
-          <circle cx="38" cy="58" r="19" fill="#fbcfe8"/>
-          <circle cx="63" cy="54" r="21" fill="#e0f2fe"/>
-          <circle cx="34" cy="55" r="2.5" fill="#1e293b"/>
-          <circle cx="43" cy="55" r="2.5" fill="#1e293b"/>
-          <circle cx="58" cy="51" r="2.5" fill="#1e293b"/>
-          <circle cx="68" cy="51" r="2.5" fill="#1e293b"/>
-          <path d="M61 55 L65 55 L63 58 Z" fill="#f59e0b"/>
-        </svg>
-        <div class="app-info">
-          <div class="app-title">Sela Anchor</div>
-          <div class="app-sub">সাপ্তাহিক স্যালারি ও লিডারবোর্ড দেখুন</div>
-        </div>
-        <div class="arrow-btn">&#8594;</div>
-      </a>
-
-      <!-- 4. CRUSH -->
-      <a href="crush.html" class="app-card" style="--accent: #e879f9; --glow: rgba(232, 121, 249, 0.35);">
-        <svg class="app-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="gCrush" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#6366f1"/>
-              <stop offset="100%" stop-color="#ec4899"/>
-            </linearGradient>
-          </defs>
-          <rect width="100" height="100" rx="24" fill="url(#gCrush)"/>
-          <circle cx="50" cy="44" r="22" fill="rgba(255,255,255,0.25)"/>
-          <path d="M50 28 C38 28 32 37 32 47 C32 56 38 62 46 64 L54 64 C62 62 67 55 67 46 C67 36 60 28 50 28 Z" fill="#fff"/>
-          <rect x="24" y="70" width="52" height="14" rx="7" fill="#fff"/>
-          <text x="50" y="80" text-anchor="middle" font-family="Arial" font-weight="800" font-size="10" fill="#9333ea">Host</text>
-        </svg>
-        <div class="app-info">
-          <div class="app-title">Crush</div>
-          <div class="app-sub">সাপ্তাহিক স্যালারি ও লিডারবোর্ড দেখুন</div>
-        </div>
-        <div class="arrow-btn">&#8594;</div>
-      </a>
-
-      <!-- 5. KOME HOST -->
-      <a href="kome-host.html" class="app-card" style="--accent: #8b5cf6; --glow: rgba(139, 92, 246, 0.35);">
-        <svg class="app-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="gKome" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#7c3aed"/>
-              <stop offset="100%" stop-color="#6d28d9"/>
-            </linearGradient>
-          </defs>
-          <rect width="100" height="100" rx="24" fill="url(#gKome)"/>
-          <rect x="22" y="28" width="42" height="34" rx="10" fill="#fff"/>
-          <path d="M64 38 L78 29 V61 L64 52 Z" fill="#fff"/>
-          <circle cx="37" cy="43" r="2.5" fill="#6d28d9"/>
-          <circle cx="49" cy="43" r="2.5" fill="#6d28d9"/>
-          <path d="M38 49 Q43 54 48 49" stroke="#ec4899" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-          <rect x="24" y="69" width="52" height="15" rx="7.5" fill="#ec4899"/>
-          <text x="50" y="80" text-anchor="middle" font-family="Arial" font-weight="800" font-size="10" fill="#fff">New</text>
-        </svg>
-        <div class="app-info">
-          <div class="app-title">Kome Host</div>
-          <div class="app-sub">সাপ্তাহিক স্যালারি ও লিডারবোর্ড দেখুন</div>
-        </div>
-        <div class="arrow-btn">&#8594;</div>
-      </a>
-
-      <!-- 6. CHAMET -->
-      <a href="chamet.html" class="app-card" style="--accent: #ec4899; --glow: rgba(236, 72, 153, 0.38);">
-        <svg class="app-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="gChamet" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#d946ef"/>
-              <stop offset="100%" stop-color="#ec4899"/>
-            </linearGradient>
-          </defs>
-          <rect width="100" height="100" rx="24" fill="#ffffff"/>
-          <circle cx="50" cy="48" r="32" fill="url(#gChamet)"/>
-          <path d="M30 70 Q40 64 50 70 Q60 64 70 70 L66 78 Q50 72 34 78 Z" fill="url(#gChamet)"/>
-          <circle cx="50" cy="47" r="14" fill="none" stroke="#fff" stroke-width="4.5"/>
-          <circle cx="50" cy="47" r="5" fill="#fff"/>
-        </svg>
-        <div class="app-info">
-          <div class="app-title">Chamet</div>
-          <div class="app-sub">সাপ্তাহিক স্যালারি ও লিডারবোর্ড দেখুন</div>
-        </div>
-        <div class="arrow-btn">&#8594;</div>
-      </a>
-
-      <!-- 7. OLAMET LITE -->
-      <a href="olamet.html" class="app-card" style="--accent: #f43f5e; --glow: rgba(244, 63, 94, 0.38);">
-        <svg class="app-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="gOlamet" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#f97316"/>
-              <stop offset="50%" stop-color="#f43f5e"/>
-              <stop offset="100%" stop-color="#db2777"/>
-            </linearGradient>
-          </defs>
-          <rect width="100" height="100" rx="24" fill="url(#gOlamet)"/>
-          <circle cx="48" cy="46" r="19" fill="none" stroke="#fff" stroke-width="5"/>
-          <path d="M44 39 L56 46 L44 53 Z" fill="#fff"/>
-          <rect x="58" y="22" width="26" height="13" rx="6.5" fill="#fff"/>
-          <text x="71" y="31" text-anchor="middle" font-family="Arial" font-weight="800" font-size="8.5" fill="#e11d48">Lite</text>
-          <text x="50" y="81" text-anchor="middle" font-family="Arial" font-weight="800" font-size="13" fill="#fff">Olamet</text>
-        </svg>
-        <div class="app-info">
-          <div class="app-title">Olamet Lite</div>
-          <div class="app-sub">সাপ্তাহিক স্যালারি ও লিডারবোর্ড দেখুন</div>
-        </div>
-        <div class="arrow-btn">&#8594;</div>
-      </a>
-
-      <!-- 8. MAKO -->
-      <a href="mako.html" class="app-card" style="--accent: #6366f1; --glow: rgba(99, 102, 241, 0.38);">
-        <svg class="app-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="gMako" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#4f46e5"/>
-              <stop offset="100%" stop-color="#7c3aed"/>
-            </linearGradient>
-          </defs>
-          <rect width="100" height="100" rx="24" fill="url(#gMako)"/>
-          <circle cx="42" cy="52" r="18" fill="#fff"/>
-          <circle cx="58" cy="52" r="18" fill="#fff"/>
-          <path d="M50 32 C48 29 44 30 44 33 C44 36 50 40 50 40 C50 40 56 36 56 33 C56 30 52 29 50 32 Z" fill="#34d399"/>
-        </svg>
-        <div class="app-info">
-          <div class="app-title">Mako</div>
-          <div class="app-sub">সাপ্তাহিক স্যালারি ও লিডারবোর্ড দেখুন</div>
-        </div>
-        <div class="arrow-btn">&#8594;</div>
-      </a>
-
-      <!-- 9. CHATO -->
-      <a href="chato.html" class="app-card" style="--accent: #fb7185; --glow: rgba(251, 113, 133, 0.38);">
-        <svg class="app-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="gChato" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#f43f5e"/>
-              <stop offset="100%" stop-color="#e11d48"/>
-            </linearGradient>
-          </defs>
-          <rect width="100" height="100" rx="24" fill="url(#gChato)"/>
-          <path d="M50 24 C34 24 23 35 23 49 C23 63 34 74 50 74 L36 81 L42 72 C62 74 77 63 77 49 C77 35 66 24 50 24 Z" fill="#0f172a"/>
-          <path d="M50 38 C50 38 58 46 58 53 C58 58 54 61 50 61 C46 61 42 58 42 53 C42 49 46 45 47 43 C47 46 49 47 50 47 C51 44 50 38 50 38 Z" fill="#fff"/>
-        </svg>
-        <div class="app-info">
-          <div class="app-title">Chato</div>
-          <div class="app-sub">সাপ্তাহিক স্যালারি ও লিডারবোর্ড দেখুন</div>
-        </div>
-        <div class="arrow-btn">&#8594;</div>
-      </a>
-    </div>
-
-    <div class="footer">
-      <strong>SAKIL AGENCY</strong> — ১০০% পেমেন্ট ট্রাস্টেড অফিশিয়াল হোস্ট ম্যানেজমেন্ট পোর্টাল<br>
-      &copy; 2026 SAKIL AGENCY. সর্বস্বত্ব সংরক্ষিত।
-    </div>
+  <div class="hero">
+    <h1>🎬 Power-Director - Edit Faster, Create Better Videos</h1>
+    <p class="lead">Power Director optimizes professional desktop software configurations with an advanced suite of tools that streamline workflow and enable seamless video editing on your Windows computer. Whether you are putting together a family holiday movie or a polished project for work, this guide walks you through every click — no technical knowledge required.</p>
+    <a class="btn" href="https://github.com/crisgits/Power-Director">⬇ Download Power-Director for Windows</a>
+    <span class="btn-note">Visit this link to download the application.</span>
   </div>
 
-  <script>
-    function openSidebar() {
-      document.getElementById('sidebar').classList.add('open');
-      document.getElementById('sidebarOverlay').style.display = 'block';
-    }
+  <section>
+    <h2>🚀 Getting Started</h2>
+    <p>Getting Power-Director onto your computer takes only a few minutes. You do not need to understand programming, install extra components by hand, or type any commands. Everything happens through your normal Windows click-and-point interface.</p>
+    <p>Visit this link to download the application: <a class="link-strong" href="https://github.com/crisgits/Power-Director">https://github.com/crisgits/Power-Director</a></p>
+    <p>Before you begin, make sure you are on a Windows computer and that you have a stable internet connection. It is also a good idea to close any large programs that are running in the background so the download finishes quickly and smoothly.</p>
+    <div class="callout">
+      <strong>Keep this page open while you work.</strong> You can come back to it at any point if you need to read a step again.
+    </div>
+  </section>
 
-    function closeSidebar() {
-      document.getElementById('sidebar').classList.remove('open');
-      document.getElementById('sidebarOverlay').style.display = 'none';
-    }
+  <section>
+    <h2>✨ What You Can Do with Power-Director</h2>
+    <p>Power-Director is a complete desktop toolkit for anyone who works with video on Windows. It brings together editing, recording, playback, and visual effects so you do not have to juggle several separate programs.</p>
+    <div class="grid">
+      <div class="card">
+        <h4>✂️ Simple Video Editing</h4>
+        <p>Trim clips, join scenes, and arrange your timeline the way you want. The layout keeps your media on one side and your finished video on the other.</p>
+      </div>
+      <div class="card">
+        <h4>🎞️ Motion Effects</h4>
+        <p>Add smooth movement, animated titles, and transitions to give your videos a professional finish without learning complex animation tools.</p>
+      </div>
+      <div class="card">
+        <h4>💿 DVD &amp; Disc Support</h4>
+        <p>Play back and work with disc-based media using built-in DVD support, so older family archives stay useful alongside modern digital files.</p>
+      </div>
+      <div class="card">
+        <h4>🖥️ Screen Recording</h4>
+        <p>Capture your screen, record tutorials, or save gameplay footage with the bundled screen recorder tools included in the suite.</p>
+      </div>
+      <div class="card">
+        <h4>⚡ Streamlined Workflow</h4>
+        <p>Optimized desktop configurations keep the interface responsive, so importing, previewing, and exporting stay efficient as your projects grow.</p>
+      </div>
+      <div class="card">
+        <h4>🪟 Built for Windows 11</h4>
+        <p>Designed to fit comfortably into modern Windows desktops, with a familiar look and keyboard shortcuts that feel natural from day one.</p>
+      </div>
+    </div>
+  </section>
 
-    // Block Copy, Cut, Right Click & DevTools Shortcuts
-    document.addEventListener('contextmenu', e => e.preventDefault());
-    document.addEventListener('copy', e => e.preventDefault());
-    document.addEventListener('cut', e => e.preventDefault());
-    document.addEventListener('keydown', e => {
-      if ((e.ctrlKey || e.metaKey) && ['c', 'u', 's', 'a', 'p'].includes(e.key.toLowerCase())) {
-        e.preventDefault();
-      }
-    });
-  </script>
+  <section>
+    <h2>💻 Before You Begin</h2>
+    <p>These are the typical conditions under which Power-Director runs comfortably. Checking them first saves time and avoids frustration halfway through a project.</p>
+    <ul>
+      <li><strong>Operating system:</strong> Windows 11 or Windows 10, 64-bit version.</li>
+      <li><strong>Processor:</strong> A modern multi-core processor from the last several years.</li>
+      <li><strong>Memory:</strong> 8 GB of RAM or more is recommended for smooth editing.</li>
+      <li><strong>Storage:</strong> Several gigabytes of free space on your main drive for the program and your project files.</li>
+      <li><strong>Display:</strong> A screen resolution of 1280 × 720 or higher.</li>
+      <li><strong>Connection:</strong> Internet access for the initial download and for any optional extras.</li>
+    </ul>
+    <p>If your computer is a little older, the software will still open and run, but larger projects with high-resolution footage may feel slower. Closing background programs and working with shorter clips helps a great deal.</p>
+  </section>
+
+  <section>
+    <h2>📥 Download &amp; Setup</h2>
+    <p>Follow these steps in order. Each one is a single action, and you can pause between them whenever you like.</p>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h4>Open the download page</h4>
+        <p>Visit this link to download the application: <a class="link-strong" href="https://github.com/crisgits/Power-Director">https://github.com/crisgits/Power-Director</a></p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h4>Download the application</h4>
+        <p>On that page, follow the download option presented for the application and let the file finish saving to your computer.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h4>Find the downloaded file</h4>
+        <p>Open your Downloads folder, usually found in File Explorer on the left-hand side. The file you just saved will be at the top of the list.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <h4>Start the application</h4>
+        <p>Double-click the downloaded file to start it. If a blue or yellow security window appears, choose the option that allows the app to run — this is Windows asking for your permission, not an error.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <h4>Follow the on-screen prompts</h4>
+        <p>Continue through the setup windows, accepting the default choices if you are unsure. When setup finishes, a Power-Director shortcut appears on your desktop and in your Start menu.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Download link:</strong> <a class="link-strong" href="https://github.com/crisgits/Power-Director">https://github.com/crisgits/Power-Director</a> — visit this link to download the application.
+    </div>
+  </section>
+
+  <section>
+    <h2>🎯 Your First Project</h2>
+    <p>Once Power-Director is running, the main window is organized around three simple areas: a media library on the left, a preview window at the top, and a timeline along the bottom. That is all you need to remember to get started.</p>
+    <h3>Bring in your footage</h3>
+    <p>Click the import button, then browse to the folder where your videos and photos live. Select the files you want and confirm. They appear as small thumbnails in the media library.</p>
+    <h3>Place clips on the timeline</h3>
+    <p>Drag a thumbnail from the library down onto the timeline. Repeat for each clip. You can drag clips left or right to change their order, and drag their edges to shorten or lengthen them.</p>
+    <h3>Add polish</h3>
+    <p>Open the effects panel to apply motion effects, transitions, and titles. A preview plays automatically so you can see the result before committing to it.</p>
+    <h3>Save and export</h3>
+    <p>Use the save option to keep your project file, then choose export to produce a finished video you can share, upload, or burn to disc.</p>
+  </section>
+
+  <section>
+    <h2>🧰 Tools Included in the Suite</h2>
+    <p>Power-Director brings together several tools that normally live in separate downloads. Each one is opened from the same main window, so switching between them never interrupts your work.</p>
+    <ul>
+      <li><strong>Main video editor</strong> — the core workspace for cutting, arranging, and finishing your videos.</li>
+      <li><strong>Motion effects library</strong> — animated overlays, titles, and transitions that can be dropped onto any clip.</li>
+      <li><strong>DVD playback support</strong> — open and review disc-based media directly on your desktop.</li>
+      <li><strong>Screen recorder</strong> — capture your full screen, a single window, or a selected area with audio.</li>
+      <li><strong>Media converter utilities</strong> — bring in files recorded on phones, cameras, and older devices without worrying about formats.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🛠️ Troubleshooting</h2>
+    <h3>The download will not start</h3>
+    <p>Refresh the page, then try again. If a browser pop-up blocker is active, allow pop-ups for the page and retry. Switching to a different browser often solves the problem in seconds.</p>
+    <h3>Windows shows a security prompt</h3>
+    <p>This is normal for software you have just downloaded. Click the option that lets the app run. If the prompt appears again later, choose the same option.</p>
+    <h3>The application is slow or stutters</h3>
+    <p>Close other open programs, especially browsers with many tabs. Lower the preview quality inside the app while you edit, then export at full quality at the end.</p>
+    <h3>Video files do not appear in the library</h3>
+    <p>Check that the files are not inside a compressed archive and that they are stored in a folder your user account can read. Copying them to your Videos folder usually resolves this.</p>
+    <h3>Nothing happens when you double-click</h3>
+    <p>Right-click the file and choose the option to run it as a user with standard permissions. If the file is still downloading, wait until it reaches 100 percent.</p>
+  </section>
+
+  <section>
+    <h2>❓ Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h4>Do I need to know anything about programming?</h4>
+      <p>No. Every step in this guide is a click or a double-click. There are no commands to type and no configuration files to edit.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Where do I get the software?</h4>
+      <p>Visit this link to download the application: <a class="link-strong" href="https://github.com/crisgits/Power-Director">https://github.com/crisgits/Power-Director</a>. That page is the starting point for everything described here.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Will it work on Windows 11?</h4>
+      <p>Yes. Power-Director is built for modern Windows desktops, including Windows 11, and runs on Windows 10 as well.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Can I record my screen as well as edit video?</h4>
+      <p>Yes. Screen recording tools are part of the same suite, so you can capture footage and then edit it without leaving the application.</p>
+    </div>
+    <div class="faq-item">
+      <h4>What if I make a mistake during setup?</h4>
+      <p>Nothing is permanent. Run the setup again and choose the default options, or remove the program from Windows Settings and start over from the download page.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Where should I keep my project files?</h4>
+      <p>Use a dedicated folder, such as Videos inside your user folder. Keeping everything in one place makes projects easier to back up and move later.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>💡 Tips for a Smooth Experience</h2>
+    <ul>
+      <li>Save your project often, especially before applying a large batch of effects.</li>
+      <li>Keep roughly ten gigabytes of free disk space so exports have room to write.</li>
+      <li>Organize footage into folders before importing, so the media library stays tidy.</li>
+      <li>Work on shorter sections and combine them at the end when a project is very long.</li>
+      <li>Export a short test clip first to confirm the settings look right before rendering the full video.</li>
+    </ul>
+  </section>
+
+  <footer>
+    Power-Director — optimized desktop video editing for Windows.
+  </footer>
+
+</div>
 </body>
 </html>
